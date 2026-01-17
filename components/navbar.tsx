@@ -32,9 +32,11 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center gap-2">
-          <Button variant="ghost" size="icon" className="hidden sm:flex">
-             <User className="h-5 w-5" />
-          </Button>
+          <Link href="/join">
+            <Button variant="ghost" size="icon" className="hidden sm:flex">
+              <User className="h-5 w-5" />
+            </Button>
+          </Link>
           <Link href="/wishlist">
             <Button variant="ghost" size="icon" className="relative">
               <Heart className="h-5 w-5" />
@@ -63,7 +65,10 @@ export function Navbar() {
               <SheetHeader>
                 <SheetTitle className="text-left">PIKE</SheetTitle>
               </SheetHeader>
-               <div className="flex flex-col gap-4 mt-8">
+              <div className="flex flex-col gap-4 mt-8">
+                <Link href="/join" className="text-lg font-medium hover:text-primary transition-colors">
+                  Join Us
+                </Link>
                 <Link href="/products" className="text-lg font-medium hover:text-primary transition-colors">
                   New Arrivals
                 </Link>

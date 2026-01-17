@@ -41,7 +41,9 @@ export default function Home() {
            </p>
            <div className="flex gap-2 max-w-md mx-auto">
              {/* Newsletter placeholder */}
-              <Button size="lg" className="w-full">Become a Member</Button>
+              <Button size="lg" className="w-full" asChild>
+                <Link href="/join">Become a Member</Link>
+              </Button>
            </div>
         </div>
       </section>
