@@ -8,7 +8,9 @@ import { CheckCircle } from "lucide-react";
 import { useCart } from "@/components/cart-provider";
 import { motion } from "framer-motion";
 
-export default function SuccessPage() {
+import { Suspense } from "react";
+
+function SuccessContent() {
   const searchParams = useSearchParams();
   const sessionId = searchParams.get("session_id");
   const { cart, removeFromCart } = useCart(); // In a real app, you'd clear the cart globally
@@ -39,5 +41,13 @@ export default function SuccessPage() {
         </Button>
       </div>
     </div>
+  );
+}
+
+export default function SuccessPage() {
+  return (
+    <Suspense fallback={<div className="flex items-center justify-center min-h-[60vh]">Loading...</div>}>
+      <SuccessContent />
+    </Suspense>
   );
 }

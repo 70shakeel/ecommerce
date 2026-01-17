@@ -7,7 +7,7 @@ import { ShoppingBag, Minus, Plus, Trash2 } from "lucide-react";
 import Image from "next/image";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
-import { loadStripe } from "@stripe/stripe-js";
+
 import { useState } from "react";
 
 export function CartSheet() {
@@ -26,16 +26,15 @@ export function CartSheet() {
         body: JSON.stringify({ items: cart }),
       });
 
-      const { sessionId, error } = await response.json();
+      const { url, error } = await response.json();
 
       if (error) {
         alert(error); // Simple error handling for now
         return;
       }
 
-      const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || 'pk_test_mock_key');
-      if (stripe) {
-        await stripe.redirectToCheckout({ sessionId });
+      if (url) {
+        window.location.href = url;
       }
     } catch (err) {
       console.error('Checkout error:', err);

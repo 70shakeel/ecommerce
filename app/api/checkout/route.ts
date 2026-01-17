@@ -3,7 +3,7 @@ import Stripe from 'stripe';
 
 // Initialize Stripe with secret key
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || 'sk_test_mock_key', {
-  apiVersion: '2024-11-20.acacia', // Use latest stable version or what's available
+  apiVersion: '2025-11-17.clover', // Use latest stable version or what's available
 });
 
 export async function POST(req: Request) {
@@ -39,7 +39,7 @@ export async function POST(req: Request) {
       cancel_url: `${req.headers.get('origin')}/cancel`,
     });
 
-    return NextResponse.json({ sessionId: session.id });
+    return NextResponse.json({ sessionId: session.id, url: session.url });
   } catch (err: any) {
     console.error('Stripe Checkout Error:', err);
     return NextResponse.json(
