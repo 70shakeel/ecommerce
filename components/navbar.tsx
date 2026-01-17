@@ -1,13 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { ShoppingBag, Menu, User } from "lucide-react";
+import { ShoppingBag, Menu, User, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { useCart } from "@/components/cart-provider";
+import { useWishlist } from "@/components/wishlist-provider";
 
 export function Navbar() {
   const { cartCount, setIsCartOpen } = useCart();
+  const { wishlistCount } = useWishlist();
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b">
@@ -33,6 +35,16 @@ export function Navbar() {
           <Button variant="ghost" size="icon" className="hidden sm:flex">
              <User className="h-5 w-5" />
           </Button>
+          <Link href="/wishlist">
+            <Button variant="ghost" size="icon" className="relative">
+              <Heart className="h-5 w-5" />
+              {wishlistCount > 0 && (
+                <span className="absolute -top-1 -right-1 h-4 w-4 rounded-full bg-primary text-primary-foreground text-[10px] font-bold flex items-center justify-center">
+                  {wishlistCount}
+                </span>
+              )}
+            </Button>
+          </Link>
           <Button variant="ghost" size="icon" className="relative" onClick={() => setIsCartOpen(true)}>
             <ShoppingBag className="h-5 w-5" />
             {cartCount > 0 && (

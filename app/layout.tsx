@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google"; // or local fonts if preferred, simplifying for now
 import "./globals.css";
 import { CartProvider } from "@/components/cart-provider";
+import { WishlistProvider } from "@/components/wishlist-provider";
 import { Navbar } from "@/components/navbar";
 import { CartSheet } from "@/components/cart-sheet";
 import { Footer } from "@/components/footer";
@@ -22,12 +23,14 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className} min-h-screen flex flex-col antialiased`}>
         <CartProvider>
-          <Navbar />
-          <CartSheet />
-          <main className="flex-1 pt-16">
-            {children}
-          </main>
-          <Footer />
+          <WishlistProvider>
+            <Navbar />
+            <CartSheet />
+            <main className="flex-1 pt-16">
+              {children}
+            </main>
+            <Footer />
+          </WishlistProvider>
         </CartProvider>
       </body>
     </html>

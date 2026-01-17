@@ -6,7 +6,8 @@ import { Product } from "@/lib/data";
 import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "./cart-provider";
-import { ShoppingBag } from "lucide-react";
+import { ShoppingBag, Heart } from "lucide-react";
+import { useWishlist } from "@/components/wishlist-provider";
 
 interface ProductCardProps {
   product: Product;
@@ -14,6 +15,7 @@ interface ProductCardProps {
 
 export function ProductCard({ product }: ProductCardProps) {
   const { addToCart } = useCart();
+  const { isInWishlist, addToWishlist, removeFromWishlist } = useWishlist();
 
   return (
     <Card className="group overflow-hidden border-none shadow-none hover:shadow-xl transition-all duration-300">
@@ -26,8 +28,22 @@ export function ProductCard({ product }: ProductCardProps) {
             className="object-cover transition-transform duration-500 group-hover:scale-110"
           />
           {/* Quick Add Overlay */}
-          <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center p-4">
-             {/* This could be a Quick View button */}
+          <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-start justify-end p-4">
+              <Button
+                  variant="secondary"
+                  size="icon"
+                  className="rounded-full shadow-md hover:scale-105 transition-transform"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (isInWishlist(product.id)) {
+                      removeFromWishlist(product.id);
+                    } else {
+                      addToWishlist(product.id);
+                    }
+                  }}
+                >
+                  <Heart className={`h-5 w-5 ${isInWishlist(product.id) ? "fill-red-500 text-red-500" : "text-gray-600"}`} />
+                </Button>
           </div>
         </div>
       </Link>

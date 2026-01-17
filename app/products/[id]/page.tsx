@@ -9,6 +9,7 @@ import { products, Product } from "@/lib/data";
 import { useCart } from "@/components/cart-provider";
 import { ShoppingBag, Star, Share2, Heart, Check } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { SizeGuide } from "@/components/size-guide";
 
 export default function ProductDetailPage() {
   const { id } = useParams();
@@ -75,7 +76,7 @@ export default function ProductDetailPage() {
           <div className="mb-8">
              <div className="flex justify-between items-center mb-4">
                <span className="font-semibold">Select Size</span>
-               <Button variant="link" className="h-auto p-0 text-muted-foreground">Size Guide</Button>
+               <SizeGuide />
              </div>
              <div className="grid grid-cols-4 sm:grid-cols-5 gap-3">
                {product.sizes.map((size) => (
