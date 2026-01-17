@@ -39,8 +39,8 @@ export function HeroSection() {
             <Button size="lg" className="text-lg px-8 py-6" asChild>
               <Link href="/products">Shop Collection</Link>
             </Button>
-            <Button size="lg" variant="outline" className="text-lg px-8 py-6 border-white text-white hover:bg-white hover:text-black transition-colors" asChild>
-              <Link href="/products/new">New Arrivals</Link>
+            <Button size="lg" variant="outline" className="text-lg px-8 py-6 bg-transparent border-white text-white hover:bg-white hover:!text-black transition-colors" asChild>
+              <Link href="/products">New Arrivals</Link>
             </Button>
           </div>
         </motion.div>

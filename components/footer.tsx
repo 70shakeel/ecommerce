@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export function Footer() {
   return (
     <footer className="bg-secondary/30 border-t py-12 mt-auto">
@@ -12,19 +14,51 @@ export function Footer() {
           <div>
             <h4 className="font-semibold mb-4">Shop</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>New Arrivals</li>
-              <li>Running</li>
-              <li>Lifestyle</li>
-              <li>Sale</li>
+              <li>
+                <Link href="/products" className="hover:text-foreground transition-colors">
+                  New Arrivals
+                </Link>
+              </li>
+              <li>
+                <Link href="/products?category=Running" className="hover:text-foreground transition-colors">
+                  Running
+                </Link>
+              </li>
+              <li>
+                <Link href="/products?category=Lifestyle" className="hover:text-foreground transition-colors">
+                  Lifestyle
+                </Link>
+              </li>
+              <li>
+                <Link href="/products" className="hover:text-foreground transition-colors">
+                  Sale
+                </Link>
+              </li>
             </ul>
           </div>
           <div>
             <h4 className="font-semibold mb-4">Support</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>Help Center</li>
-              <li>Returns</li>
-              <li>Size Guide</li>
-              <li>Contact Us</li>
+              <li>
+                <Link href="/help" className="hover:text-foreground transition-colors">
+                  Help Center
+                </Link>
+              </li>
+              <li>
+                <Link href="/returns" className="hover:text-foreground transition-colors">
+                  Returns
+                </Link>
+              </li>
+              <li>
+                <Link href="/size-guide" className="hover:text-foreground transition-colors">
+                  Size Guide
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-foreground transition-colors">
+                  Contact Us
+                </Link>
+              </li>
             </ul>
           </div>
           <div>
